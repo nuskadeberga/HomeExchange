@@ -48,6 +48,15 @@
 .origin-chip{display:inline-flex;align-items:center;gap:7px;padding:6px 9px;border-radius:999px;background:white;border:1px solid #d7e4de;color:#37554d;font-size:.78rem;box-shadow:0 2px 8px rgba(30,70,58,.05)}
 .origin-chip b{font-weight:750}.origin-chip em{font-style:normal;background:#2f8a5b;color:white;min-width:21px;height:21px;border-radius:50%;display:inline-grid;place-items:center;font-weight:850;font-size:.72rem}
 @media(max-width:720px){.accepted-origin-panel{padding:16px 12px}.accepted-origin-head{display:block}.accepted-origin-total{display:inline-block;margin-top:10px}.accepted-origin-world{min-width:660px}.accepted-origin-map{overflow-x:auto;padding-bottom:5px;justify-content:flex-start}.origin-chips{justify-content:flex-start}}
+
+
+.sent-destination-summary{margin:0 0 16px;padding:20px 22px;background:linear-gradient(180deg,#fff 0%,#fbfaf7 100%)}
+.sent-destination-summary-head h3{font:500 26px/1.1 Georgia,serif;margin:0 0 5px}.sent-destination-summary-head p{margin:0;color:var(--muted);font-size:14px}
+.sent-summary-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:17px 0 12px}.sent-summary-stat{padding:13px 14px;border:1px solid var(--line);border-radius:13px;background:#fff}.sent-summary-stat span{display:block;color:var(--muted);font-size:11px;font-weight:850;letter-spacing:.055em;text-transform:uppercase}.sent-summary-stat strong{display:block;font:500 29px/1 Georgia,serif;margin:7px 0 3px}.sent-summary-stat small{display:block;color:var(--muted);font-size:11px}.sent-summary-stat.highlighted{border-top:4px solid var(--teal);background:#f4faf8}
+.sent-summary-note{margin:0 0 14px;padding:10px 12px;border-radius:11px;background:var(--gold2);color:#725b1c;font-size:13px;line-height:1.45}
+.sent-destination-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 14px}.sent-destination-row{display:grid;grid-template-columns:minmax(105px,.8fr) minmax(100px,1.4fr) 30px 82px;gap:9px;align-items:center;width:100%;padding:8px 9px;border:1px solid transparent;border-radius:11px;background:transparent;color:var(--ink);font:inherit;text-align:left;cursor:pointer}.sent-destination-row:hover,.sent-destination-row:focus-visible{background:#f3f7f5;border-color:var(--line);outline:none}.sent-destination-name{font-weight:800;font-size:13px}.sent-destination-track{height:8px;border-radius:999px;background:var(--gray2);overflow:hidden}.sent-destination-track span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--teal),#64ada5)}.sent-destination-row>strong{text-align:right}.sent-destination-row>small{text-align:right;color:var(--muted);font-size:11px}.sent-destination-row>small.has-accepted{color:var(--teal);font-weight:850}
+@media(max-width:900px){.sent-summary-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.sent-destination-list{grid-template-columns:1fr}}
+@media(max-width:520px){.sent-summary-kpis{grid-template-columns:1fr 1fr}.sent-destination-summary{padding:16px 13px}.sent-destination-row{grid-template-columns:minmax(90px,.8fr) minmax(70px,1fr) 25px}.sent-destination-row>small{grid-column:1/-1;text-align:left;padding-left:0}.sent-summary-stat strong{font-size:25px}}
 </style>
 </head>
 <body>
@@ -2973,7 +2982,84 @@ z
 </section>
 <section class="page-section detailed-section" id="enviades">
 <div class="section-head"><div><h2>Peticions enviades</h2><p>Cases que heu contactat per intentar aconseguir allotjament.</p></div><div class="count" id="sentShown"></div></div>
-<div class="filters"><input id="sentHostSearch" placeholder="Filtra per hostaler…" type="search"/><input id="sentDestinationSearch" placeholder="Filtra per destinació o país…" type="search"/><select id="sentStatus"><option value="">Tots els estats</option></select><select id="sentCompany"><option value="">Totes les companyies</option></select><button class="btn" id="sentCsv">Exporta CSV</button></div>
+
+<article class="panel sent-destination-summary">
+<div class="sent-destination-summary-head">
+<div>
+<h3>Peticions per destinació</h3>
+<p>Volum de contactes realitzats per trobar allotjament. Clica una destinació per veure les peticions corresponents.</p>
+</div>
+</div>
+<div class="sent-summary-kpis">
+<div class="sent-summary-stat"><span>Peticions totals</span><strong>90</strong></div>
+<div class="sent-summary-stat"><span>Destinacions</span><strong>10</strong></div>
+<div class="sent-summary-stat"><span>Mitjana global</span><strong>9.0</strong><small>peticions per destinació</small></div>
+<div class="sent-summary-stat highlighted"><span>Mitjana sense NYC</span><strong>3.4</strong><small>més representativa</small></div>
+</div>
+<p class="sent-summary-note"><strong>Nova York concentra 59 peticions (66%) i cap acceptació.</strong> Per això es mostra també la mitjana sense NYC.</p>
+<div class="sent-destination-list">
+<button class="sent-destination-row" data-sent-dest="NYC" type="button">
+<span class="sent-destination-name">NYC</span>
+<span class="sent-destination-track"><span style="width:100.00%"></span></span>
+<strong>59</strong>
+<small class="">0 acceptades</small>
+</button>
+<button class="sent-destination-row" data-sent-dest="Lanzarote" type="button">
+<span class="sent-destination-name">Lanzarote</span>
+<span class="sent-destination-track"><span style="width:13.56%"></span></span>
+<strong>8</strong>
+<small class="has-accepted">1 acceptada</small>
+</button>
+<button class="sent-destination-row" data-sent-dest="Delta" type="button">
+<span class="sent-destination-name">Delta</span>
+<span class="sent-destination-track"><span style="width:11.86%"></span></span>
+<strong>7</strong>
+<small class="has-accepted">1 acceptada</small>
+</button>
+<button class="sent-destination-row" data-sent-dest="Eivissa" type="button">
+<span class="sent-destination-name">Eivissa</span>
+<span class="sent-destination-track"><span style="width:11.86%"></span></span>
+<strong>7</strong>
+<small class="">0 acceptades</small>
+</button>
+<button class="sent-destination-row" data-sent-dest="Costa daurada" type="button">
+<span class="sent-destination-name">Costa daurada</span>
+<span class="sent-destination-track"><span style="width:3.39%"></span></span>
+<strong>2</strong>
+<small class="has-accepted">1 acceptada</small>
+</button>
+<button class="sent-destination-row" data-sent-dest="Mallorca" type="button">
+<span class="sent-destination-name">Mallorca</span>
+<span class="sent-destination-track"><span style="width:3.39%"></span></span>
+<strong>2</strong>
+<small class="has-accepted">1 acceptada</small>
+</button>
+<button class="sent-destination-row" data-sent-dest="Marsella" type="button">
+<span class="sent-destination-name">Marsella</span>
+<span class="sent-destination-track"><span style="width:3.39%"></span></span>
+<strong>2</strong>
+<small class="has-accepted">1 acceptada</small>
+</button>
+<button class="sent-destination-row" data-sent-dest="Menorca" type="button">
+<span class="sent-destination-name">Menorca</span>
+<span class="sent-destination-track"><span style="width:1.69%"></span></span>
+<strong>1</strong>
+<small class="has-accepted">1 acceptada</small>
+</button>
+<button class="sent-destination-row" data-sent-dest="Narbona" type="button">
+<span class="sent-destination-name">Narbona</span>
+<span class="sent-destination-track"><span style="width:1.69%"></span></span>
+<strong>1</strong>
+<small class="has-accepted">1 acceptada</small>
+</button>
+<button class="sent-destination-row" data-sent-dest="PAÍS BASC" type="button">
+<span class="sent-destination-name">PAÍS BASC</span>
+<span class="sent-destination-track"><span style="width:1.69%"></span></span>
+<strong>1</strong>
+<small class="has-accepted">1 acceptada</small>
+</button>
+</div>
+</article><div class="filters"><input id="sentHostSearch" placeholder="Filtra per hostaler…" type="search"/><input id="sentDestinationSearch" placeholder="Filtra per destinació o país…" type="search"/><select id="sentStatus"><option value="">Tots els estats</option></select><select id="sentCompany"><option value="">Totes les companyies</option></select><button class="btn" id="sentCsv">Exporta CSV</button></div>
 <div class="table-shell"><table><thead><tr><th>Hostaler / destinació</th><th>Estat</th><th>Companyia</th><th>Persones</th><th>Modalitat</th><th>Dates</th><th>Contacte</th></tr></thead><tbody id="sentBody"></tbody></table></div><div class="cards-mobile" id="sentCards"></div>
 </section>
 <section class="page-section detailed-section" id="rebudes">
@@ -14961,7 +15047,7 @@ z
 </div>
 <div class="origin-chips"><span class="origin-chip"><b>França</b><em>8</em></span><span class="origin-chip"><b>Itàlia</b><em>4</em></span><span class="origin-chip"><b>Espanya</b><em>2</em></span><span class="origin-chip"><b>Portugal</b><em>2</em></span><span class="origin-chip"><b>Austràlia</b><em>1</em></span><span class="origin-chip"><b>Canadà</b><em>1</em></span><span class="origin-chip"><b>Mèxic</b><em>1</em></span><span class="origin-chip"><b>Regne Unit</b><em>1</em></span></div>
 </article>
-<div class="filters"><input id="receivedHostSearch" placeholder="Filtra per hoste o usuari…" type="search"/><input id="receivedOriginSearch" placeholder="Filtra per origen o país…" type="search"/><select id="receivedStatus"><option value="">Tots els estats</option></select><select id="receivedReason"><option value="">Tots els motius</option></select><button class="btn" id="receivedCsv">Exporta CSV</button></div>
+<div class="filters"><input id="receivedHostSearch" placeholder="Filtra per hoste…" type="search"/><input id="receivedOriginSearch" placeholder="Filtra per origen o país…" type="search"/><select id="receivedStatus"><option value="">Tots els estats</option></select><select id="receivedReason"><option value="">Tots els motius</option></select><button class="btn" id="receivedCsv">Exporta CSV</button></div>
 <div class="table-shell"><table><thead><tr><th>Hoste / origen</th><th>Estat</th><th>Estada</th><th>Motiu</th><th>Persones</th><th>Modalitat</th><th>Habitatge</th></tr></thead><tbody id="receivedBody"></tbody></table></div><div class="cards-mobile" id="receivedCards"></div>
 </section>
 <section class="page-section detailed-section" id="punts">
@@ -14991,6 +15077,11 @@ z
 const D=JSON.parse(document.getElementById('data').textContent); const $=s=>document.querySelector(s); const $$=s=>[...document.querySelectorAll(s)];
 const esc=v=>String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 const norm=v=>String(v??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+const uniqueParts=parts=>{const out=[];parts.filter(Boolean).forEach(value=>{const clean=String(value).trim();if(clean&&!out.some(item=>norm(item)===norm(clean)))out.push(clean)});return out};
+const cleanPlace=value=>/^nyc\s+guillermo$/i.test(String(value||'').trim())?'NYC':String(value||'').trim();
+const geoLabel=r=>uniqueParts([cleanPlace(r.lloc),r.pais]).join(' · ')||'—';
+const cleanDetail=value=>uniqueParts(String(value||'').split('·').map(cleanPlace)).join(' · ')||'—';
+const gpTitle=r=>r.origin==='CiA'&&/^nyc\s+/i.test(r.label||'')?'NYC':(r.label||'—');
 const fmt=d=>d?new Intl.DateTimeFormat('ca-ES').format(new Date(d+'T12:00:00')):'—';
 const range=(a,b)=>a?(b&&b!==a?`${fmt(a)} – ${fmt(b)}`:fmt(a)):'—';
 const badge=s=>`<span class="badge b-${esc(s||'Sense-estat').replaceAll(' ','-')}">${esc(s||'Sense estat')}</span>`;
@@ -15028,9 +15119,20 @@ bars('#sentStatusBars',sentC,'',true); bars('#originBars',counts(recAccepted,r=>
 fillSelect('#sentStatus',D.sent.map(r=>r.estat)); fillSelect('#sentCompany',D.sent.map(r=>r.companyia||'No informada'));
 fillSelect('#receivedStatus',D.received.map(r=>r.estat)); fillSelect('#receivedReason',D.received.map(r=>r.motiu||'Sense motiu'));
 let currentSent=[],currentReceived=[];
-function renderSent(){const host=norm($('#sentHostSearch').value),dest=norm($('#sentDestinationSearch').value),st=$('#sentStatus').value,co=$('#sentCompany').value; currentSent=D.sent.filter(r=>(!host||norm(r.hostaler).includes(host))&&(!dest||norm([r.lloc,r.pais].join(' ')).includes(dest))&&(!st||r.estat===st)&&(!co||(r.companyia||'No informada')===co)).sort((a,b)=>(b.contacte||'').localeCompare(a.contacte||'')); $('#sentShown').textContent=`${currentSent.length} de ${D.sent.length}`; $('#sentBody').innerHTML=currentSent.map(r=>`<tr><td><div class="name">${esc(r.hostaler)}</div><div class="muted">${esc(r.lloc)} · ${esc(r.pais)}</div></td><td>${badge(r.estat)}</td><td>${esc(r.companyia||'—')}</td><td>${r.pax??'—'}</td><td>${esc(r.intercanvi||'—')}</td><td>${range(r.dataInici,r.dataFi)}</td><td>${fmt(r.contacte)}</td></tr>`).join('')||'<tr><td colspan="7" class="empty">Cap resultat</td></tr>'; $('#sentCards').innerHTML=currentSent.map(r=>`<article class="mcard"><div class="mcard-head"><div><div class="name">${esc(r.hostaler)}</div><div class="muted">${esc(r.lloc)} · ${esc(r.pais)}</div></div>${badge(r.estat)}</div>${dl([['Companyia',esc(r.companyia||'—')],['Persones',r.pax??'—'],['Modalitat',esc(r.intercanvi||'—')],['Dates',range(r.dataInici,r.dataFi)]])}</article>`).join('')}
-function renderReceived(){const host=norm($('#receivedHostSearch').value),origin=norm($('#receivedOriginSearch').value),st=$('#receivedStatus').value,re=$('#receivedReason').value; currentReceived=D.received.filter(r=>(!host||norm([r.hosteReal,r.usuari].join(' ')).includes(host))&&(!origin||norm([r.lloc,r.pais].join(' ')).includes(origin))&&(!st||r.estat===st)&&(!re||(r.motiu||'Sense motiu')===re)).sort((a,b)=>(b.contacte||'').localeCompare(a.contacte||'')); $('#receivedShown').textContent=`${currentReceived.length} de ${D.received.length}`; $('#receivedBody').innerHTML=currentReceived.map(r=>`<tr><td><div class="name">${esc(r.hosteReal||'Sense nom')}</div><div class="muted">Usuari ${esc(r.usuari)} · ${esc(r.lloc)} · ${esc(r.pais)}</div></td><td>${badge(r.estat)}<div class="muted">${esc(r.faseEstada||'')}</div></td><td>${range(r.dataInici,r.dataFi)}</td><td>${esc(r.motiu||'—')} ${r.obs?`<div class="muted">${esc(r.obs)}</div>`:''}</td><td>${r.pax??'—'}</td><td>${esc(r.intercanvi||'—')}</td><td>${esc(r.habitatge||'—')}</td></tr>`).join('')||'<tr><td colspan="7" class="empty">Cap resultat</td></tr>'; $('#receivedCards').innerHTML=currentReceived.map(r=>`<article class="mcard"><div class="mcard-head"><div><div class="name">${esc(r.hosteReal||'Sense nom')}</div><div class="muted">${esc(r.lloc)} · ${esc(r.pais)}</div></div>${badge(r.estat)}</div>${dl([['Usuari',esc(r.usuari)],['Estada',range(r.dataInici,r.dataFi)+phaseLabel(r)],['Motiu',esc(r.motiu||'—')],['Modalitat',esc(r.intercanvi||'—')]])}</article>`).join('')}
+function renderSent(){const host=norm($('#sentHostSearch').value),dest=norm($('#sentDestinationSearch').value),st=$('#sentStatus').value,co=$('#sentCompany').value; currentSent=D.sent.filter(r=>(!host||norm(r.hostaler).includes(host))&&(!dest||norm([r.lloc,r.pais].join(' ')).includes(dest))&&(!st||r.estat===st)&&(!co||(r.companyia||'No informada')===co)).sort((a,b)=>(b.contacte||'').localeCompare(a.contacte||'')); $('#sentShown').textContent=`${currentSent.length} de ${D.sent.length}`; $('#sentBody').innerHTML=currentSent.map(r=>`<tr><td><div class="name">${esc(r.hostaler)}</div><div class="muted">${esc(geoLabel(r))}</div></td><td>${badge(r.estat)}</td><td>${esc(r.companyia||'—')}</td><td>${r.pax??'—'}</td><td>${esc(r.intercanvi||'—')}</td><td>${range(r.dataInici,r.dataFi)}</td><td>${fmt(r.contacte)}</td></tr>`).join('')||'<tr><td colspan="7" class="empty">Cap resultat</td></tr>'; $('#sentCards').innerHTML=currentSent.map(r=>`<article class="mcard"><div class="mcard-head"><div><div class="name">${esc(r.hostaler)}</div><div class="muted">${esc(geoLabel(r))}</div></div>${badge(r.estat)}</div>${dl([['Companyia',esc(r.companyia||'—')],['Persones',r.pax??'—'],['Modalitat',esc(r.intercanvi||'—')],['Dates',range(r.dataInici,r.dataFi)]])}</article>`).join('')}
+function renderReceived(){const host=norm($('#receivedHostSearch').value),origin=norm($('#receivedOriginSearch').value),st=$('#receivedStatus').value,re=$('#receivedReason').value; currentReceived=D.received.filter(r=>(!host||norm(r.hosteReal).includes(host))&&(!origin||norm([r.lloc,r.pais].join(' ')).includes(origin))&&(!st||r.estat===st)&&(!re||(r.motiu||'Sense motiu')===re)).sort((a,b)=>(b.contacte||'').localeCompare(a.contacte||'')); $('#receivedShown').textContent=`${currentReceived.length} de ${D.received.length}`; $('#receivedBody').innerHTML=currentReceived.map(r=>`<tr><td><div class="name">${esc(r.hosteReal||'Sense nom')}</div><div class="muted">${esc(geoLabel(r))}</div></td><td>${badge(r.estat)}<div class="muted">${esc(r.faseEstada||'')}</div></td><td>${range(r.dataInici,r.dataFi)}</td><td>${esc(r.motiu||'—')} ${r.obs?`<div class="muted">${esc(r.obs)}</div>`:''}</td><td>${r.pax??'—'}</td><td>${esc(r.intercanvi||'—')}</td><td>${esc(r.habitatge||'—')}</td></tr>`).join('')||'<tr><td colspan="7" class="empty">Cap resultat</td></tr>'; $('#receivedCards').innerHTML=currentReceived.map(r=>`<article class="mcard"><div class="mcard-head"><div><div class="name">${esc(r.hosteReal||'Sense nom')}</div><div class="muted">${esc(geoLabel(r))}</div></div>${badge(r.estat)}</div>${dl([['Estada',range(r.dataInici,r.dataFi)+phaseLabel(r)],['Motiu',esc(r.motiu||'—')],['Modalitat',esc(r.intercanvi||'—')],['Habitatge',esc(r.habitatge||'—')]])}</article>`).join('')}
 ['#sentHostSearch','#sentDestinationSearch','#sentStatus','#sentCompany'].forEach(s=>$(s).addEventListener('input',renderSent)); ['#receivedHostSearch','#receivedOriginSearch','#receivedStatus','#receivedReason'].forEach(s=>$(s).addEventListener('input',renderReceived));
+document.querySelector('.sent-destination-list').addEventListener('click',event=>{
+  const button=event.target.closest('[data-sent-dest]');
+  if(!button)return;
+  $('#sentHostSearch').value='';
+  $('#sentDestinationSearch').value=button.dataset.sentDest;
+  $('#sentStatus').value='';
+  $('#sentCompany').value='';
+  renderSent();
+  const target=document.querySelector('#enviades .filters');
+  if(target)target.scrollIntoView({behavior:'smooth',block:'start'});
+});
 $('#sentStatusBars').addEventListener('click',event=>{
   const button=event.target.closest('[data-sent-status]');
   if(!button)return;
@@ -15046,13 +15148,13 @@ $('#sentStatusBars').addEventListener('click',event=>{
 function csv(rows,cols,name){const q=v=>'"'+String(v??'').replaceAll('"','""')+'"'; const text='\ufeff'+[cols.map(c=>q(c[0])).join(';'),...rows.map(r=>cols.map(c=>q(typeof c[1]==='function'?c[1](r):r[c[1]])).join(';'))].join('\n'); const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'text/csv;charset=utf-8'}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)}
 $('#sentCsv').onclick=()=>csv(currentSent,[['Hostaler','hostaler'],['Destinació','lloc'],['País','pais'],['Estat','estat'],['Companyia','companyia'],['Persones','pax'],['Modalitat','intercanvi'],['Data inici','dataInici'],['Data fi','dataFi'],['Contacte','contacte']],'he-peticions-enviades.csv');
 
-$('#receivedCsv').onclick=()=>csv(currentReceived,[['Hoste','hosteReal'],['Usuari','usuari'],['Origen','lloc'],['País','pais'],['Estat','estat'],['Fase estada','faseEstada'],['Motiu','motiu'],['Persones','pax'],['Modalitat','intercanvi'],['Habitatge','habitatge'],['Data inici','dataInici'],['Data fi','dataFi'],['Contacte','contacte'],['Observacions','obs']],'he-peticions-rebudes.csv');
+$('#receivedCsv').onclick=()=>csv(currentReceived,[['Hoste','hosteReal'],['Origen','lloc'],['País','pais'],['Estat','estat'],['Fase estada','faseEstada'],['Motiu','motiu'],['Persones','pax'],['Modalitat','intercanvi'],['Habitatge','habitatge'],['Data inici','dataInici'],['Data fi','dataFi'],['Contacte','contacte'],['Observacions','obs']],'he-peticions-rebudes.csv');
 
 const gpS=D.guestPointsSummary, fmtNum=n=>Number(n||0).toLocaleString('ca-ES');
 $('#gpKpis').innerHTML=`<div class="kpi gp-balance"><div class="label">Saldo actual</div><div class="value">${fmtNum(gpS.balance)}</div><div class="sub">GuestPoints disponibles</div><div class="sub gp-balance-formula">${fmtNum(gpS.HE)} + ${fmtNum(gpS.HOSTE)} − ${fmtNum(gpS.CiA)} GP</div></div><div class="kpi good"><div class="label">Obtinguts d’hostes</div><div class="value">${fmtNum(gpS.HOSTE)}</div><div class="sub">Per allotjar persones a casa</div></div><div class="kpi good"><div class="label">Obtinguts per HE</div><div class="value">${fmtNum(gpS.HE)}</div><div class="sub">Bonificacions i compensacions</div></div><div class="kpi gp-spent"><div class="label">Utilitzats en viatges</div><div class="value">−${fmtNum(gpS.CiA)}</div><div class="sub">Punts gastats en destinacions</div></div>`;
 fillSelect('#gpYear',D.guestPoints.map(r=>r.date.slice(0,4)));
 let currentGp=[];
-function renderGp(){const q=norm($('#gpSearch').value),origin=$('#gpOrigin').value,year=$('#gpYear').value;currentGp=D.guestPoints.filter(r=>(!q||norm([r.label,r.detail,r.obs].join(' ')).includes(q))&&(!origin||r.origin===origin)&&(!year||r.date.startsWith(year))).sort((a,b)=>b.date.localeCompare(a.date)||b.id-a.id);$('#gpShown').textContent=`${currentGp.length} de ${D.guestPoints.length}`;$('#gpBody').innerHTML=currentGp.map(r=>`<tr><td>${fmt(r.date)}</td><td><span class="gp-type ${r.origin}">${esc(r.kind)}</span></td><td><div class="name">${esc(r.label)}</div><div class="muted">${esc(r.detail||'—')}</div></td><td>${r.nights}</td><td>${fmtNum(r.rate)}</td><td class="${r.signed<0?'gp-negative':'gp-positive'}">${r.signed<0?'−':'+'}${fmtNum(Math.abs(r.signed))} GP</td><td>${esc(r.obs||'—')}</td></tr>`).join('')||'<tr><td colspan="7" class="empty">Cap moviment</td></tr>';$('#gpCards').innerHTML=currentGp.map(r=>`<article class="mcard"><div class="mcard-head"><div><div class="name">${esc(r.label)}</div><div class="muted">${fmt(r.date)} · ${esc(r.detail||'')}</div></div><span class="gp-type ${r.origin}">${esc(r.kind)}</span></div>${dl([['Nits',r.nights],['GP/nit',fmtNum(r.rate)],['Moviment',`<span class="${r.signed<0?'gp-negative':'gp-positive'}">${r.signed<0?'−':'+'}${fmtNum(Math.abs(r.signed))} GP</span>`],['Observacions',esc(r.obs||'—')]])}</article>`).join('')}
+function renderGp(){const q=norm($('#gpSearch').value),origin=$('#gpOrigin').value,year=$('#gpYear').value;currentGp=D.guestPoints.filter(r=>(!q||norm([r.label,r.detail,r.obs].join(' ')).includes(q))&&(!origin||r.origin===origin)&&(!year||r.date.startsWith(year))).sort((a,b)=>b.date.localeCompare(a.date)||b.id-a.id);$('#gpShown').textContent=`${currentGp.length} de ${D.guestPoints.length}`;$('#gpBody').innerHTML=currentGp.map(r=>`<tr><td>${fmt(r.date)}</td><td><span class="gp-type ${r.origin}">${esc(r.kind)}</span></td><td><div class="name">${esc(gpTitle(r))}</div><div class="muted">${esc(cleanDetail(r.detail))}</div></td><td>${r.nights}</td><td>${fmtNum(r.rate)}</td><td class="${r.signed<0?'gp-negative':'gp-positive'}">${r.signed<0?'−':'+'}${fmtNum(Math.abs(r.signed))} GP</td><td>${esc(r.obs||'—')}</td></tr>`).join('')||'<tr><td colspan="7" class="empty">Cap moviment</td></tr>';$('#gpCards').innerHTML=currentGp.map(r=>`<article class="mcard"><div class="mcard-head"><div><div class="name">${esc(gpTitle(r))}</div><div class="muted">${fmt(r.date)} · ${esc(cleanDetail(r.detail))}</div></div><span class="gp-type ${r.origin}">${esc(r.kind)}</span></div>${dl([['Nits',r.nights],['GP/nit',fmtNum(r.rate)],['Moviment',`<span class="${r.signed<0?'gp-negative':'gp-positive'}">${r.signed<0?'−':'+'}${fmtNum(Math.abs(r.signed))} GP</span>`],['Observacions',esc(r.obs||'—')]])}</article>`).join('')}
 ['#gpSearch','#gpOrigin','#gpYear'].forEach(s=>$(s).addEventListener('input',renderGp));
 
 const modal=$('#mapAdminModal'), adminRows=$('#mapAdminRows');
