@@ -283,7 +283,7 @@
 /* v68 · companys de viatge */
 .companion-trips-panel{margin:0 0 16px;padding:17px 20px}
 .companion-trips-head h3{font:500 25px/1.1 Georgia,serif;margin:0 0 5px}
-.companion-trips-head p{margin:0;color:var(--muted);font-size:13px}
+.companion-trips-head p{margin:0;color:var(--muted);font-size:13px}.companion-trips-head .companion-trips-note{margin-top:6px;font-size:11.5px;color:#6e7e79}.companion-trips-head .companion-trips-note strong{color:var(--teal)}
 .companion-trips-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:13px}
 .companion-trip-card{border:1px solid var(--line);border-radius:13px;background:#fff;padding:11px 12px;min-width:0}
 .companion-trip-person{display:flex;align-items:center;gap:9px;min-width:0}
@@ -3317,7 +3317,7 @@ z
 <div class="section-head"><div><h2>Peticions enviades</h2></div></div>
 <div class="sent-summary-kpis">
 <div class="sent-summary-stat"><span>Peticions totals</span><strong>93</strong></div>
-<div class="sent-summary-stat"><span>Destinacions concretes</span><strong>13</strong></div>
+<div class="sent-summary-stat"><span>Destinacions concretes</span><strong>10</strong><small>9 aconseguides · 1 no aconseguida</small></div>
 <div class="sent-summary-stat"><span>Mitjana global de peticions per destí</span><strong>7,2</strong><small>Inclou totes les destinacions</small></div>
 <div class="sent-summary-stat highlighted"><span>Mitjana de peticions per destí sense NYC</span><strong>3,1</strong><small>Nova York concentra 59 peticions (66%) i cap acceptació.</small></div>
 </div>
@@ -3385,6 +3385,7 @@ z
 <div>
 <h3>Companys de viatge</h3>
 <p>Relació de les persones que ens han acompanyat i els viatges que hem compartit.</p>
+<p class="companion-trips-note"><strong>Nota:</strong> hem treballat 13 allotjaments concrets de cerca, que es resumeixen en 10 destinacions finals: 9 aconseguides i 1 no aconseguida. De les aconseguides, 9 han estat amb companyia i 1 l’hem feta sols: Salou.</p>
 </div>
 </div>
 <div class="companion-trips-grid" id="companionTripsGrid"></div>
